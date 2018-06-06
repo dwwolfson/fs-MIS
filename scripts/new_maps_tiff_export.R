@@ -35,7 +35,7 @@ s1.ag.df[is.na(s1.ag.df$Feral_SW),"Feral_SW"]<-0
 s1.ag.df<-s1.ag.df[!duplicated(s1.ag.df),]
 
 
-#2014-2015
+#2014-2015 
 s2.df$Feral_SW<-as.numeric(s2.df$Feral_SW)
 s2.ag.df<-merge(ag.df, s2.df[,c("FIPS", "Feral_SW")], by="FIPS", all.x=TRUE)
 s2.ag.df[is.na(s2.ag.df$Feral_SW),"Feral_SW"]<-0
