@@ -164,7 +164,38 @@ ggplot(betas, aes(x=State, y=Slope, color=class))+
   theme(axis.text = element_text(size=12,face="bold"),
         axis.title=element_text(size=14, face="bold"))+
   labs(col="Management\nClassification")
+
+#Change color scheme to match Kim's figure
+color_vec=c('black', 'gray', 'red', 'blue')
+
+ggplot(betas, aes(x=State, y=Slope, color=class))+
+  geom_point(size=4)+geom_errorbar(aes(ymin=Lower, ymax=Upper), size=1.2)+
+  xlim(rev(levels(betas$State)))+
+  geom_hline(yintercept=(0))+coord_flip()+
+  theme(axis.text = element_blank(), 
+        axis.ticks = element_blank(),
+        axis.title = element_blank(), 
+        legend.position='none',
+        plot.margin = grid::unit(c(0,0,0,0), 'mm'))+
+  scale_color_manual(values=color_vec)
         
+
+setwd('C:/Users/apdwwolfson/Documents/Projects/MIS_CPUE_model/Figures/new_glm_slopes')
+#without axes for Kim's figure
+tiff('slopes.tiff', units='in', width=7, height=5, res=600, compression='lzw')
+ggplot(betas, aes(x=State, y=Slope, color=class))+
+  geom_point(size=4)+geom_errorbar(aes(ymin=Lower, ymax=Upper), size=1.2)+
+  xlim(rev(levels(betas$State)))+
+  geom_hline(yintercept=(0))+coord_flip()+
+  theme(axis.text = element_blank(), 
+        axis.ticks = element_blank(),
+        axis.title = element_blank(), 
+        legend.position='none',
+        plot.margin = grid::unit(c(0,0,0,0), 'mm'))+
+  scale_color_manual(values=color_vec)
+dev.off()
+
+
 #Add state Fips to betas df
 betas$fips<-c(1,#AL
                5,#Arkansa
