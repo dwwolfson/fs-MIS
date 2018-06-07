@@ -145,7 +145,7 @@ betas$class<-c(4,#AL
                2,#New Mexixo
                4,#North Carolina
                2,#Ohio
-               4,#Oklahoma
+               5,#Oklahoma
                2,#Oregon
                4,#South Carolina
                3,#Tennessee
